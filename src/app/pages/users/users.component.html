@@ -1,0 +1,79 @@
+<div class="users">
+
+    <!-- => class bootstrap => other class -->
+    <div class="container-fluide">
+        <div class="row content ">          
+           <div class="col-lg-1 col-md-1 col-sm-11" >
+            <app-side-nav-bar></app-side-nav-bar>
+           </div>
+            <div class="col-lg-11 col-md-11 col-sm-1 section-users ">
+              <app-nav-bar></app-nav-bar>
+              <div class="filter-pagenation row">
+                    <div class=" col-lg-9 filter-add-user">     
+                      <div class="item">
+                        <div class="dropdown-test" [ngClass]="{'show': showDropdown}">
+                          <div class="dropdown-btn">
+                            <button class="dropbtn" (click)="toggleDropdown()">{{ selectedOption }}</button>
+                            <i class="fa fa-caret-down dropdown-icon" aria-hidden="true"></i>
+                          </div>         
+                          <div class="dropdown-content">
+                            <a *ngFor="let option of options" (click)="selectOption(option)">{{ option }}</a>
+                          </div>
+                        </div> 
+                      </div>
+                      <div class="item">
+                        <button type="submit" class="btn-add-user" routerLink="/adduser">+ Ajouter un utilisateur</button>
+                      </div>
+                    </div>
+                    <div class="col-lg-3  pagenation">
+                      pagenation
+                    </div>
+              </div>
+                <div>
+                  <table id="header" *ngIf="users">
+  
+                    <tr>
+                        <th>Igg</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Pays </th>
+                        <th>Ville </th>
+                        <th>Roles</th>
+                        <th></th>        
+                    </tr>
+                    <tr *ngFor="let u of users">
+                        <td>{{u.igg}}</td>
+                        <td>{{u.firstName}}</td>
+                        <td>{{u.lastName}}</td>
+                        <td>{{u.country}}</td>
+                        <td>{{u.city}}</td>                  
+                        <td>
+                          <ul class="horizontal-list">                               
+                                      <li *ngFor="let r of u.userRoles">
+                                <span>{{ r.role }}</span>
+                                   </li>
+                             
+                          </ul>
+                        </td>
+                        <td>
+                          <a><i routerLink="update/{{u.igg}}" class="fa fa-pencil" style="color:#065ec2"></i></a>
+                          &nbsp;
+                          <i class="fa fa-trash-o" style="color:red" (click)="deleteUser(u.igg)"></i>
+                         
+                        </td>
+                    </tr>
+             
+                    
+                    
+                    </table>
+                    
+                </div>
+                
+       
+  
+              </div>
+        </div>
+       
+    </div>
+  </div>
+  

@@ -1,0 +1,41 @@
+
+<form action="" [formGroup]="formGroup" (ngSubmit)="addUser()">
+    <div> <!--  class="form_add_user"-->
+      <div class="text_field">
+        <input type="text" id="igg" name="igg" formControlName="igg">
+        <span></span>
+        <label for="igg">Igg</label>
+      </div>
+      <div class="text_field">
+        <input type="text" id="firstName" name="firstName" formControlName="firstName">
+        <span></span>
+        <label for="firstName">Prenom</label>
+      </div>
+      <div class="text_field">
+        <input type="text" id="lastName" name="lastName" formControlName="lastName">
+        <span></span>
+        <label for="lastName">Nom</label>
+      </div>
+      <div class="text_field">
+        <input type="text" id="country" name="country" formControlName="country">
+        <span></span>
+        <label for="country">Pays</label>
+      </div>
+      <div class="text_field">
+        <input type="text" id="city" name="city" formControlName="city">
+        <span></span>
+        <label for="city">Ville</label>
+      </div>
+      <div>
+        <label>Roles:</label>
+        <div *ngFor="let r of roles; let i = index">
+          <input type="checkbox" [value]="r.id" (change)="onRoleCheckboxChange($event, r)" >
+          {{ r.role }}
+        </div>
+      </div>
+    </div>
+    <div>   
+      <button type="submit"  class="btn-mt-3">Ajouter</button> 
+    </div>
+    </form>
+  
